@@ -125,18 +125,13 @@ commands = {
 // Function that handles the output from the speech_recognition api
 function handle_recognized_text(data) {
     if (data.error) {}
-    else if (data.commands) {
-        console.log('Commands:', data.commands)
-        console.log('Content:', data.content)
+    else if (data.command) {
         outputParagraph = null;
         outputParagraph = document.elementFromPoint(globalXprediction, globalYprediction);
         if (outputParagraph) {
             console.log('Output ID: ', outputParagraph.id);
             if (outputs.includes(outputParagraph.id)) {
-                for (let i = 0; i < data.commands.length; i++) {
-                    console.log(data.commands[i]);
-                    commands[data.commands[i]](data.content, outputParagraph);
-                }
+                commands[data.command](data.content, outputParagraph);
             } else {
                 console.log('Element is not in outputs.');
                 get_recognized_text();

@@ -30,37 +30,40 @@ def recognize_command(rec_text, keywords):
     """
     rec_text = rec_text.lstrip()
     split_text = rec_text.split(" ")
-    commands = []
-        
-    for word in split_text:
+    command, content = "", ""
 
-        formatted_word = "".join(letter for letter in word if letter.isalnum())
-        formatted_word = formatted_word.lower()
+    if len(split_text) > 1:
         
-        if formatted_word in keywords:
-            command = formatted_word
-            commands.append(command)
-            if len(split_text) > 1:
+        for word in split_text:
+            formatted_word = "".join(letter for letter in word if letter.isalnum())
+            formatted_word = formatted_word.lower()
+            if formatted_word in keywords:
+                command = formatted_word
                 content = " ".join(split_text[split_text.index(word) + 1:]).capitalize()
-            else:
-                content = ""
-            #print('Command: ', command)
-            #print('Content: ', content)
-            if formatted_word == 'type':
+                print('Command: ', command)
+                print('Content: ', content)
                 break
+    
+    else:
+        command = "".join(letter for letter in split_text[0] if letter.isalnum())
+        command = command.lower()
 
-    if commands:
+    if command in keywords:
 
-        rec_command = commands
-        rec_content = content
+        rec_command = command
 
-        print(f"Commands detected: {commands}")
+        if len(split_text) > 1:
+            rec_content = content
+        else:
+            rec_content = ''
+
+        print(f"Command [{command}] successfully recognized !")
         return rec_command, rec_content
 
     else:
-        print(f"No command detected!")
+        print(f"Command {command} was not recognized")
         play_sound(ERROR_PATH)
-        return ['none'], ''
+        return 'none', ''
 
 
 microphone = sr.Microphone()
@@ -91,8 +94,8 @@ def recognize_speech():
         recognized_text = recognizer.recognize_whisper(audio, language='english')
         print(f"Whisper thinks you said: {recognized_text}")
         play_sound(CUE_OUT_PATH)
-        commands, content = recognize_command(recognized_text, keywords)
-        return jsonify({'commands': commands, 'content': content})
+        command, content = recognize_command(recognized_text, keywords)
+        return jsonify({'command': command, 'content': content})
     except sr.UnknownValueError:
         return jsonify({'error': 'Speech recognition could not understand audio'})
     except sr.RequestError as e:
