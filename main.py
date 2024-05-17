@@ -39,7 +39,7 @@ def recognize_command(rec_text, keywords):
             formatted_word = formatted_word.lower()
             if formatted_word in keywords:
                 command = formatted_word
-                content = " ".join(split_text[split_text.index(word) + 1:])
+                content = " ".join(split_text[split_text.index(word) + 1:]).capitalize()
                 print('Command: ', command)
                 print('Content: ', content)
                 break
