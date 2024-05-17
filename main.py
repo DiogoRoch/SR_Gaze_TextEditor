@@ -68,7 +68,7 @@ def recognize_command(rec_text, keywords):
 
 microphone = sr.Microphone()
 recognizer = sr.Recognizer()
-keywords = ["delete", "type", "strong", "italic", "small", "big", "underline", "strip", "update"]
+keywords = ["delete", "type", "strong", "italic", "small", "big", "underline", "strip"]
 
 
 @app.route('/')
