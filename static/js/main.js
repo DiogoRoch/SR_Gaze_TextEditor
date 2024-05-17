@@ -3,11 +3,12 @@ let globalXprediction;
 let globalYprediction;
 let outputParagraph;
 const outputs = ['output1', 'output2', 'output3', 'output4']; // to check if we are looking at an output
+
 let globalTexts = { // variable where we store the text for each paragraph
-    'output1': '',
-    'output2': '',
-    'output3': '',
-    'output4': ''
+    'output1': "The story of Sharky the toothbrusher",
+    'output2': "In the deep sea, there was a special boy named Sharky. He didn't want to be like other sea kids; he dreamed of being a toothbrusher. But his dad, a big shark, had different plans. He wanted Sharky to be the strongest and beat the king, Squiddy the first.",
+    'output3': "100g of cheese, 2L of milk, 12 eggs, 2 cucumbers, 1 salad, 4 yogurts, 1 big brown bread, 400g of beef meat, 400g of butter, 2k of sugar, 300g of strawberries, 1 bottle of ketchup",
+    'output4': "Even with his dad pushing him to do something else, Sharky stuck to his dream. He loved brushing teeth and wanted to make everyone's smile sparkle. And that's how Sharky's journey to be the best toothbrusher in the sea began."
 }
 ////////// End of Constants and Variable Declarations //////////
 
@@ -46,26 +47,54 @@ function selectText(element) {
 }
 
 // Function that handles the select function
-function handleSelect(content, outputParagraph) {
+function handleSelect(outputParagraph) {
     selectText(outputParagraph);
 }
 
 // Function that deletes the text
 function deleteText(content, outputParagraph) {
-    globalTexts[currentOutput] = '';
+    globalTexts[outputParagraph.id] = '';
     outputParagraph.innerText = '';
 }
 
 // Function that sets the selected text as bold
 function strongText(content, outputParagraph) {
+    handleSelect(outputParagraph);
     const selection = window.getSelection().toString();
     outputParagraph.innerHTML = outputParagraph.innerHTML.replace(selection, `<strong>${selection}</strong>`);
 }
 
 // Function that sets the selected text as italic
 function italicText(content, outputParagraph) {
+    handleSelect(outputParagraph);
     const selection = window.getSelection().toString();
     outputParagraph.innerHTML = outputParagraph.innerHTML.replace(selection, `<i>${selection}</i>`);
+}
+
+// Function that sets the selected text as small font size
+function smallText(content, outputParagraph) {
+    handleSelect(outputParagraph);
+    const selection = window.getSelection().toString();
+    outputParagraph.innerHTML = outputParagraph.innerHTML.replace(selection, `<font size='5'>${selection}</font>`);
+}
+
+// Function that sets the selected text as big font size
+function bigText(content, outputParagraph) {
+    handleSelect(outputParagraph);
+    const selection = window.getSelection().toString();
+    outputParagraph.innerHTML = outputParagraph.innerHTML.replace(selection, `<font size='6'>${selection}</font>`);
+}
+
+// Function that sets the selected text as big font size
+function underlineText(content, outputParagraph) {
+    handleSelect(outputParagraph);
+    const selection = window.getSelection().toString();
+    outputParagraph.innerHTML = outputParagraph.innerHTML.replace(selection, `<u>${selection}</u>`);
+}
+
+// Function that strips the text of all formatting
+function stripText(content, outputParagraph) {
+    outputParagraph.innerText = globalTexts[outputParagraph.id];
 }
 
 // Function that handles the speech_rec content and sets it as the inner text of the current paragraph
@@ -76,16 +105,20 @@ function handle_input(content, outputParagraph) {
     outputParagraph.innerText = globalTexts[outputParagraph.id];
 }
 
+
 // Function that does nothing in case the command is not recognized
 function no_command(content, outputParagraph) {console.log('Command not recognized!')}
 
 // Command dictionary with functions as values
 commands = {
-    'select': handleSelect,
     'delete': deleteText,
     'strong': strongText,
     'italic': italicText,
     'type': handle_input,
+    'small': smallText,
+    'big': bigText,
+    'underline': underlineText,
+    'strip': stripText,
     'none': no_command
 }
 
@@ -99,7 +132,10 @@ function handle_recognized_text(data) {
             console.log('Output ID: ', outputParagraph.id);
             if (outputs.includes(outputParagraph.id)) {
                 commands[data.command](data.content, outputParagraph);
-            } else {console.log('Element is not in outputs.')}
+            } else {
+                console.log('Element is not in outputs.');
+                get_recognized_text();
+            }
         } else {console.log('No output found.')}
     }
 }
@@ -165,7 +201,9 @@ function checkCoordinates() {
 
 ////////// Main code Starts Here //////////
 window.onload = async function() {
-
+    
+    console.log('Window loaded');
+    
     //start the webgazer tracker
     await webgazer.setRegression('ridge') /* currently must set regression and tracker */
         //.setTracker('clmtrackr')

@@ -1,120 +1,288 @@
-body {
-    min-width:600px!important;
+/*Getting fonts from google api*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.div1{
+    body {
+        min-width:600px!important;
+    }
+    
+    button {
+        border-radius: 4px;
+    }
+    /* Video Feed Styling */
+    /*#overlay {
+    /* Video Feed Styling:
+     * Include the !important keyword to override default styles applied by JS.
+     * webgazer.js sets defaults for: display, position, top, left, width, height
+     */
+    /*} */
+    #webgazerVideoContainer {
+        display: block !important; 
+        position: fixed !important;
+        top: 0px !important;
+        left: 0px !important;
+        width: 320px !important;
+        height: 240px !important;
+        z-index: 1;
+    }
+    
+    /* Navbar styling */
+    #webgazerNavbar {
+        left: 320px;
+        width: calc(100% - 320px);
+        z-index: 0;
+        box-shadow: 0px 3px 5px #ddd;
+        border:0px;
+        background-color: #fff;
+    }
+    
+    #Accuracy a{
+        background-color: #222;
+        color: #eee;
+        left: -15px;
+        padding-left: 80px;
+        padding-right: 40px;
+    }
+    #Accuracy {
+        background-color: #222;
+        padding-left: inherit;
+    }
+    
+    li {
+        padding-left: 50px;
+    }
+    .navbar-right li {
+        padding-right: 20px;
+    }
+    
+    .helpBtn {
+        display: inline-block;
+        padding: 15px;
+        border: none;
+        background: none;
+        color: #777;
+    }
+    .helpBtn:hover {
+        color: black!important;
+        text-decoration: none;
+    }
+    .modal-header {
+        border-bottom: none!important;
+    }
+    
+    /* Calibration button styling */
+    .Calibration{
+        width: 20px;
+        height: 20px;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        border-radius: 25px;
+        background-color: red;
+        opacity: 0.2;
+        border-color: black;
+        border-style: solid;
+        position:fixed;
+    }
+    
+    /* Calibration point position */
+    #Pt1{
+        top: 70px;
+        left:340px;
+    }
+    #Pt2{
+        top: 70px;
+        left:50vw;
+        margin-left: 340;
+    }
+    #Pt3{
+        top: 70px;
+        right:2vw;
+    }
+    #Pt4{
+        top:50vh;
+        left:2vw;
+    }
+    #Pt5{
+        top: 50vh;
+        left: 50vw;
+    }
+    #Pt6{
+        top: 50vh;
+        right:2vw;
+    }
+    #Pt7{
+        bottom:2vw;
+        left: 2vw;
+    }
+    #Pt8{
+        bottom:2vw;
+        left:50vw;
+    }
+    #Pt9{
+        bottom:2vw;
+        right:2vw;
+    }
 }
 
-button {
-    border-radius: 4px;
-}
-/* Video Feed Styling */
-#overlay {
-/* Video Feed Styling:
- * Include the !important keyword to override default styles applied by JS.
- * webgazer.js sets defaults for: display, position, top, left, width, height
- */
-}
-#webgazerVideoContainer {
-    display: block !important; 
-    position: fixed !important;
-    top: 0px !important;
-    left: 0px !important;
-    width: 320px !important;
-    height: 240px !important;
-    z-index: 1;
+.container {
+    #text-editor {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+        background: #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    
+    /*Setting format for lines of text*/
+    li {
+        margin-left: 16px;
+    }
+    
+    a {
+        cursor: pointer;
+    }
+    
+    /*Setting up format of toolbar*/
+    .toolbar {
+        padding: 30px;
+        background: #ccc;
+        position: relative;
+        height: 245px
+    }
+    
+    .toolbar .head {
+        display: flex;
+        grid-gap: 50px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+        position: relative;
+        justify-content: flex-end;
+        margin-right: 250px;
+    }
+    
+    /*Formatting of buttons in header toolbar*/
+    .toolbar .head .headerbuttons {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        grid-gap: 30px;
+    }
+    
+    .toolbar .head .headerbuttons button {
+        background: #fff;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+    }
+    
+    .toolbar .head .headerbuttons button:hover {
+        background: #f3f3f3;
+    }
+    
+    /*Formatting of buttons in toolbar*/
+    .toolbar .btn-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        grid-gap: 30px;
+        justify-content: flex-end;
+        margin-right: 250px;
+    }
+    
+    .toolbar .btn-toolbar button {
+        background: #fff;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+    }
+    
+    .toolbar .btn-toolbar button:hover {
+        background: #f3f3f3;
+    }
+    
+    /* Button to show if it is recording*/
+    #rec_button {
+        position: absolute;
+        top: 120px;
+        right: 20px;
+        transform: translateY(-50%);
+        background-color: red;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        width: 230px;
+        height: 230px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+    
+    #rec_button:hover {
+        background-color: #ff6666;
+        border-color: #ff3333;
+    }
+    
+    /*Formatting content/text*/
+    #output1 {
+        padding: 16px;
+        outline: none;
+        font-size: 24px;
+        background: #eee;
+        min-height: 120px;
+        margin-top: 10px;
+    }
+    #output2 {
+        padding: 16px;
+        outline: none;
+        font-size: 24px;
+        background: #eee;
+        min-height: 120px;
+        margin-top: 10px;
+    }
+    #output3 {
+        padding: 16px;
+        outline: none;
+        font-size: 24px;
+        background: #eee;
+        min-height: 120px;
+        margin-top: 10px;
+    }
+    #output4 {
+        padding: 16px;
+        outline: none;
+        font-size: 24px;
+        background: #eee;
+        min-height: 120px;
+        margin-top: 10px;
+    }
 }
 
-/* Navbar styling */
-#webgazerNavbar {
-    left: 320px;
-    width: calc(100% - 320px);
-    z-index: 0;
-    box-shadow: 0px 3px 5px #ddd;
-    border:0px;
-    background-color: #fff;
-}
-
-#Accuracy a{
-    background-color: #222;
-    color: #eee;
-    left: -15px;
-    padding-left: 80px;
-    padding-right: 40px;
-}
-#Accuracy {
-    background-color: #222;
-    padding-left: inherit;
-}
-
-li {
-    padding-left: 50px;
-}
-.navbar-right li {
-    padding-right: 20px;
-}
-
-.helpBtn {
-    display: inline-block;
-    padding: 15px;
-    border: none;
-    background: none;
-    color: #777;
-}
-.helpBtn:hover {
-    color: black!important;
-    text-decoration: none;
-}
-.modal-header {
-    border-bottom: none!important;
-}
-
-/* Calibration button styling */
-.Calibration{
-    width: 20px;
-    height: 20px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 25px;
-    background-color: red;
-    opacity: 0.2;
-    border-color: black;
-    border-style: solid;
-    position:fixed;
-}
-
-/* Calibration point position */
-#Pt1{
-    top: 70px;
-    left:340px;
-}
-#Pt2{
-    top: 70px;
-    left:50vw;
-    margin-left: 340;
-}
-#Pt3{
-    top: 70px;
-    right:2vw;
-}
-#Pt4{
-    top:50vh;
-    left:2vw;
-}
-#Pt5{
-    top: 50vh;
-    left: 50vw;
-}
-#Pt6{
-    top: 50vh;
-    right:2vw;
-}
-#Pt7{
-    bottom:2vw;
-    left: 2vw;
-}
-#Pt8{
-    bottom:2vw;
-    left:50vw;
-}
-#Pt9{
-    bottom:2vw;
-    right:2vw;
+/*Setting up format of container for toolbar*/
+.container {
+    max-width: 1400px;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
 }

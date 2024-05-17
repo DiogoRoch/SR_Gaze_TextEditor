@@ -13,10 +13,9 @@ CUE_IN_PATH = os.path.realpath(os.path.join(
 CUE_OUT_PATH = os.path.realpath(os.path.join(
     os.path.dirname(os.path.realpath(__file__)), "./data/cue_outro.wav"
 ))
-SYNC_FILE = os.path.realpath(os.path.join(
-    os.path.dirname(os.path.realpath(__file__)), "./data/cloudsync.wav"
+ERROR_PATH = os.path.realpath(os.path.join(
+    os.path.dirname(os.path.realpath(__file__)), "./data/error.wav"
 ))
-
 
 
 def play_sound(filename):
@@ -24,20 +23,26 @@ def play_sound(filename):
     data, samplerate = sf.read(filename)
     sd.play(data, samplerate)
 
-
 def recognize_command(rec_text, keywords):
     """
-    This method splits the recognized text into the first word and the rest
-    It then cleans the first word and stores it as self.command and stores the rest of the text as self.content
+    This method goes through all words of the recognized text checks if they're in the keywords and 
+    if true it returns it as the command and the rest of the text as the content
     """
     rec_text = rec_text.lstrip()
-    split_text = rec_text.split(" ", 1)
-    rec_command, rec_content = "", ""
+    split_text = rec_text.split(" ")
+    command, content = "", ""
 
     if len(split_text) > 1:
-        first_word, rest = split_text # Splits on the first encountered space (so the first word can keep special characters and needs to be cleaned)
-        command = "".join(letter for letter in first_word if letter.isalnum()) # This makes a new string and joins letters if they're either alphabetic or numeric
-        command = command.lower() # This converts the command into lower case, optimizes the comparisons
+        
+        for word in split_text:
+            formatted_word = "".join(letter for letter in word if letter.isalnum())
+            formatted_word = formatted_word.lower()
+            if formatted_word in keywords:
+                command = formatted_word
+                content = " ".join(split_text[split_text.index(word) + 1:])
+                print('Command: ', command)
+                print('Content: ', content)
+                break
     
     else:
         command = "".join(letter for letter in split_text[0] if letter.isalnum())
@@ -48,7 +53,7 @@ def recognize_command(rec_text, keywords):
         rec_command = command
 
         if len(split_text) > 1:
-            rec_content = rest
+            rec_content = content
         else:
             rec_content = ''
 
@@ -56,13 +61,14 @@ def recognize_command(rec_text, keywords):
         return rec_command, rec_content
 
     else:
-        print(f"Command [{command}] was not recognized")
+        print(f"Command {command} was not recognized")
+        play_sound(ERROR_PATH)
         return 'none', ''
 
 
 microphone = sr.Microphone()
 recognizer = sr.Recognizer()
-keywords = ["insert", "delete", "type", "select", "click", "strong", "italic"]
+keywords = ["delete", "type", "strong", "italic", "small", "big", "underline", "strip", "update"]
 
 
 @app.route('/')

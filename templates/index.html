@@ -16,7 +16,7 @@ Instructions on use can be found in the README repository.
         <!-- <link rel="stylesheet" type="text/css" href="./static/css/style.css"> -->
         <link rel="stylesheet" href="../static/node_modules/bootstrap/dist/css/bootstrap.min.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
-        <link rel="stylesheet" href="../static/style.css">
+        <link rel="stylesheet" href="../static/css/style.css">
         <!-- <script src="./tensorflow.js"></script> -->
         <script src="../static/webgazer.js"></script>
     </head>
@@ -89,25 +89,17 @@ Instructions on use can be found in the README repository.
             <div class="head">
                 <!--Buttons for font sizes-->
                 <div class="headerbuttons">
-                    <button onclick="fileHandle('new')">New file</button>
-                    <button onclick="fileHandle('pdf')">Save as pdf</button>
-                    <button onclick="formatDoc('fontSize', '5')">Medium</button>
+                    <button onclick="formatDoc('fontSize', '5')">Small</button>
                     <button onclick="formatDoc('fontSize', '6')">Large</button>
-                    <button onclick="formatDoc('fontSize', '7')">Extra Large</button>
                 </div>
             </div>
             <div class="btn-toolbar">
                 <!--Setting up icons that can change formatting-->
                 <!--Getting these icons from boxicons.com-->
                 <!--Onclick commands from https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand-->
-                <button onclick="formatDoc('undo')"><i class='bx bx-undo' ></i></button>
-                <button onclick="formatDoc('redo')"><i class='bx bx-redo' ></i></button>
                 <button onclick="formatDoc('bold')"><i class='bx bx-bold'></i></button>
                 <button onclick="formatDoc('underline')"><i class='bx bx-underline' ></i></button>
                 <button onclick="formatDoc('italic')"><i class='bx bx-italic' ></i></button>
-                <button onclick="formatDoc('strikeThrough')"><i class='bx bx-strikethrough' ></i></button>
-                <button onclick="formatDoc('insertOrderedList')"><i class='bx bx-list-ol' ></i></button>
-                <button onclick="formatDoc('insertUnorderedList')"><i class='bx bx-list-ul' ></i></button>
             </div>
             <!--Adding button to show if recording or not-->
             <div class="rec-button">
@@ -115,10 +107,10 @@ Instructions on use can be found in the README repository.
             </div>
         </div>
         <!--Adding content (text)-->
-        <div id="output1" class="outputs" contenteditable="true" spellcheck="false">Paragraph 1</div>
-        <div id="output2" class="outputs" contenteditable="true" spellcheck="false">Paragraph 2</div>
-        <div id="output3" class="outputs" contenteditable="true" spellcheck="false">Paragraph 3</div>
-        <div id="output4" class="outputs" contenteditable="true" spellcheck="false">Paragraph 4</div>
+        <div id="output1" class="outputs" contenteditable="true" spellcheck="false">The story of Sharky the toothbrusher</div>
+        <div id="output2" class="outputs" contenteditable="true" spellcheck="false"><b><i><u>In the deep sea, there was a special boy named Sharky. He didn't want to be like other sea kids; he dreamed of being a toothbrusher. But his dad, a big shark, had different plans. He wanted Sharky to be the strongest and beat the king, Squiddy the first.</u></i></b></div>
+        <div id="output3" class="outputs" contenteditable="true" spellcheck="false">100g of cheese, 2L of milk, 12 eggs, 2 cucumbers, 1 salad, 4 yogurts, 1 big brown bread, 400g of beef meat, 400g of butter, 2k of sugar, 300g of strawberries, 1 bottle of ketchup</div>
+        <div id="output4" class="outputs" contenteditable="true" spellcheck="false"><font size="6">Even with his dad pushing him to do something else, Sharky stuck to his dream. He loved brushing teeth and wanted to make everyone's smile sparkle. And that's how Sharky's journey to be the best toothbrusher in the sea began.</font></div>
       </div>
         <!-- Latest compiled JavaScript -->
         <script src="../static/js/resize_canvas.js"></script>
