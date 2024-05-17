@@ -5,10 +5,10 @@ let outputParagraph;
 const outputs = ['output1', 'output2', 'output3', 'output4']; // to check if we are looking at an output
 
 let globalTexts = { // variable where we store the text for each paragraph
-    'output1': "The story of Sharky the toothbrusher",
-    'output2': "In the deep sea, there was a special boy named Sharky. He didn't want to be like other sea kids; he dreamed of being a toothbrusher. But his dad, a big shark, had different plans. He wanted Sharky to be the strongest and beat the king, Squiddy the first.",
-    'output3': "100g of cheese, 2L of milk, 12 eggs, 2 cucumbers, 1 salad, 4 yogurts, 1 big brown bread, 400g of beef meat, 400g of butter, 2k of sugar, 300g of strawberries, 1 bottle of ketchup",
-    'output4': "Even with his dad pushing him to do something else, Sharky stuck to his dream. He loved brushing teeth and wanted to make everyone's smile sparkle. And that's how Sharky's journey to be the best toothbrusher in the sea began."
+    'output1': "The story of Sharky the toothbrusher ",
+    'output2': "In the deep sea, there was a special boy named Sharky. He didn't want to be like other sea kids; he dreamed of being a toothbrusher. But his dad, a big shark, had different plans. He wanted Sharky to be the strongest and beat the king, Squiddy the first. ",
+    'output3': "100g of cheese, 2L of milk, 12 eggs, 2 cucumbers, 1 salad, 4 yogurts, 1 big brown bread, 400g of beef meat, 400g of butter, 2k of sugar, 300g of strawberries, 1 bottle of ketchup ",
+    'output4': "Even with his dad pushing him to do something else, Sharky stuck to his dream. He loved brushing teeth and wanted to make everyone's smile sparkle. And that's how Sharky's journey to be the best toothbrusher in the sea began. "
 }
 ////////// End of Constants and Variable Declarations //////////
 
