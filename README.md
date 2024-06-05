@@ -5,7 +5,7 @@
 - Diogo Rocha
 
 ## Extra Resources
-- Inside the directory "Extra_Resources" you can find:
+- Inside the directory "Report_and_Demo" you can find:
   - The final report of the project.
   - The demo of the application.
 
