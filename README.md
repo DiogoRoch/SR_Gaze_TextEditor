@@ -4,6 +4,11 @@
 - Léandre Dubey
 - Diogo Rocha
 
+## Extra Resources
+- Inside the directory "Extra_Resources" you can find:
+  - The final report of the project.
+  - The demo of the application.
+
 ## Dependencies
 - Python version used to run the app: Python 3.11.8.
 - Install the libraries from the "requirements.txt" file.
